@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <link href="css/reset.css" rel="stylesheet" />
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="shortcut icon" href="css/favicon.png" />
+    <link rel="apple-touch-icon" href="css/apple-touch-icon.png" />
+    <!-- Code Prettifier: -->
+<link href="css/highlight.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+    <link href="css/style.css" rel="stylesheet" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,800italic,300,400,800' rel='stylesheet' type='text/css'>    
+
+
+  </head>
+
+  <body>
+  <div class="fallback-message">
+  <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+  <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+  </div>
+    <div id="impress">
+    <div class='step' >
+    
+<h2>Web Application workflows and useful tools</h2>
+</div>
+      <div class='step'  data-x='1000'>
+    
+<h2>Useful Tools</h2>
+
+<ul>
+<li>Total Finder</li>
+<li><a href="https://www.google.com/intl/en/chrome/browser/canary.html">Google Chrome Canary</a></li>
+<li>Alfred</li>
+<li>Dash</li>
+<li>Sublime plugins
+
+<ul>
+<li>Docblockr</li>
+<li>VCS Gutter</li>
+<li>Sublime linter</li>
+</ul></li>
+<li>How to sync all of these
+
+<ul>
+<li><a href="https://github.com/danielhusar/my-sublime-plugins#sync-between-devices">dropbox</a></li>
+<li><a href="http://dotfiles.github.io/">dotfiles</a></li>
+</ul></li>
+</ul>
+</div>
+      <div class='step'  data-x='2000'>
+    
+<h2>Progressive enhancement</h2>
+
+<ul>
+<li>Mobile first</li>
+<li>Avoid respond.js and still support old browsers</li>
+<li>Don&#39;t use ids</li>
+<li>CSS Transitions</li>
+</ul>
+</div>
+      <div class='step'  data-x='3000'>
+    
+<h2>Javascript good practise</h2>
+
+<h3>Unit tests</h3>
+<pre><code class='prettyprint javascript'>describe('APP', function() {
+  describe('Prototypes', function() {
+    it('FMT is working.', function () {
+      APP.fmt("test%@1%@2", 1, 2).should.equal('test12');
+    });
+  });
+});
+</code></pre></div>
+      <div class='step'  data-x='4000'>
+    
+<h2>Javascript good practise</h2>
+
+<h3>Bindings</h3>
+
+<p>Not so good</p>
+<pre><code class='prettyprint javascript'>$('ul li').click(fn);
+</code></pre>
+<p>Better</p>
+<pre><code class='prettyprint javascript'>$('ul').on('click', 'li', fn);
+</code></pre>
+<p>Best</p>
+<pre><code class='prettyprint javascript'>$('[data-items]').on('click.app', '[data-item]', fn);
+</code></pre></div>
+      <div class='step'  data-x='5000'>
+    
+<h2>Javascript good practise</h2>
+
+<h3>Closures and strict mode</h3>
+<pre><code class='prettyprint javascript'>(function(window, document, APP, $, undefined) {
+  'use strict';
+
+  ...
+
+})(this, this.document, this.APP, this.jQuery);
+</code></pre></div>
+      <div class='step'  data-x='6000'>
+    
+<h2>Javascript good practise</h2>
+
+<h3>Promises</h3>
+<pre><code class='prettyprint javascript'>var promise = function(){
+  var df = $.Deferred();
+
+  if (...) {
+    df.resolve();
+  } else {
+    df.reject();
+  }
+
+  return df.promise();
+}
+
+var testPromise = promise();
+testPromise.done(fn);
+</code></pre></div>
+      <div class='step'  data-x='7000'>
+    
+<h2>Javascript good practise</h2>
+
+<h3>Declare variables them outside of loops</h3>
+
+<p>Not so good</p>
+<pre><code class='prettyprint javascript'>for(var i = 0; i < someArray.length; i++) {
+</code></pre>
+<p>Better</p>
+<pre><code class='prettyprint javascript'>for(var i = 0, len = someArray.length; i < len;  i++) {
+</code></pre></div>
+      <div class='step'  data-x='8000'>
+    
+<h2>Javascript good practise</h2>
+
+<h3>Cache selectors</h3>
+<pre><code class='prettyprint javascript'>var $el = $(...);
+
+$el.on(...);
+...
+$el.addClass(...);
+</code></pre></div>
+      <div class='step'  data-x='9000'>
+    
+<h2>Javascript good practise</h2>
+
+<h3>Lint your code</h3>
+
+<ul>
+<li>jshint</li>
+<li>eslint</li>
+</ul>
+</div>
+      <div class='step'  data-x='10000'>
+    
+<h2>Grunt</h2>
+
+<ul>
+<li>Javascript linting</li>
+<li>Javascript beauty</li>
+<li>Running unit tests</li>
+<li>Switching between prod and dev environment</li>
+<li>Start http server with watch task</li>
+<li>Creating sprites</li>
+<li>Minifying images</li>
+<li>Creating screenshots</li>
+</ul>
+</div>
+      <div class='step'  data-x='11000'>
+    
+<h2>Yeoman</h2>
+
+<ul>
+<li><a href="http://yeoman.io/community-generators.html">Community generators</a></li>
+<li>Custom generator</li>
+</ul>
+</div>
+      <div class='step'  data-x='12000'>
+    
+<h2>Bower</h2>
+
+<ul>
+<li>Package manager</li>
+</ul>
+</div>
+      <div class='step'  data-x='13000'>
+    
+<h2>Thank you</h2>
+
+      </div>
+    <script src="js/impress.js"></script>
+    <script>impress().init();</script>
+  </body>
+</html>
+    
